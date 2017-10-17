@@ -1,0 +1,39 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!--连接的数据库地址-->
+		<property name="connection.url">jdbc:mysql://localhost:3306/hi0703</property>
+		<!--数据库驱动-->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!--连接的数据库用户名-->
+		<property name="connection.username">root</property>
+		<!--连接的数据库密码-->
+		<property name="connection.password">123456</property>
+		<!--可选项配置-->
+		<!--配置每次运行表的生成策略
+			create: 每次运行都生成新的表,一般用于测试
+			create-drop: 每次运行都生成新的表,在运行结束时再把生成的表删除了
+			update: 如果有表则更新表,如果没有表则创建表
+			validate: 如果有表,则验证表结果,如果与原来的表结构不一致,则抛出异常
+		-->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!--每次执行 sql 语句时都在控制台显示 sql 语句-->
+		<property name="hibernate.show_sql">true</property>
+		<!--每次控制台显示 SQL 语句时将 sql 语句进行格式化显示-->
+		<property name="hibernate.format_sql">true</property>
+		<!--sql 语句执行时底层转换的方言是什么-->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!--将实体类映射文件引入到 hibernate 配置文件中-->
+		<mapping resource="com/lanou/domain/Student.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
